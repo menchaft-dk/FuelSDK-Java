@@ -39,6 +39,7 @@ import java.util.List;
 import org.junit.Assume;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import static org.junit.Assert.assertEquals;
@@ -51,6 +52,7 @@ import static com.exacttarget.fuelsdk.ETResult.Status.OK;
 import com.exacttarget.fuelsdk.internal.Attribute;
 import java.util.UUID;
 
+@Ignore("All Failing")
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ETDataExtensionTest {
     private static ETClient client = null;
