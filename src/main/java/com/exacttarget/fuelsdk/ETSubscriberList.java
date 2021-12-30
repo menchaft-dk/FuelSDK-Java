@@ -1,6 +1,6 @@
 package com.exacttarget.fuelsdk;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.cxf.xjc.runtime.JAXBToStringStyle;
 
 import com.exacttarget.fuelsdk.ETSubscriber.Status;
@@ -13,33 +13,33 @@ import com.exacttarget.fuelsdk.internal.*;
 
 
 /**
- * 
- * This class takes care of the association between subscriber and the subscription list. 
+ *
+ * This class takes care of the association between subscriber and the subscription list.
  * You need to use this class to modify users in a specific list
  *
  */
 @SoapObject(internalType = SubscriberList.class)
 public class ETSubscriberList extends ETSoapObject{
-	
-	@ExternalName("status")		
+
+    @ExternalName("status")
     protected Status status = null;
-	@ExternalName("list")
-	//@InternalName("list")
+    @ExternalName("list")
+    //@InternalName("list")
     protected ETList list = null;
-	@ExternalName("action")
+    @ExternalName("action")
     protected String action = null;
-	@ExternalName("subscriber")
+    @ExternalName("subscriber")
     protected ETSubscriber subscriber = null;
-	@ExternalName("ID")
+    @ExternalName("ID")
     protected String id = null;
-	
-	 /**
+
+    /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SubscriberStatus }
-     *     
+     *
      */
     public String getId() {
         return id;
@@ -47,11 +47,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SubscriberStatus }
-     *     
+     *
      */
     public void setId(String value) {
         this.id = value;
@@ -59,11 +59,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Gets the value of the status property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link SubscriberStatus }
-     *     
+     *
      */
     public Status getStatus() {
         return status;
@@ -71,11 +71,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Sets the value of the status property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link SubscriberStatus }
-     *     
+     *
      */
     public void setStatus(Status value) {
         this.status = value;
@@ -83,11 +83,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Gets the value of the list property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link List }
-     *     
+     *
      */
     public ETList getList() {
         return list;
@@ -95,11 +95,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Sets the value of the list property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link List }
-     *     
+     *
      */
     public void setList(ETList value) {
         this.list = value;
@@ -107,11 +107,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Gets the value of the action property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getAction() {
         return action;
@@ -119,11 +119,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Sets the value of the action property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setAction(String value) {
         this.action = value;
@@ -131,11 +131,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Gets the value of the subscriber property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link Subscriber }
-     *     
+     *
      */
     public ETSubscriber getSubscriber() {
         return subscriber;
@@ -143,11 +143,11 @@ public class ETSubscriberList extends ETSoapObject{
 
     /**
      * Sets the value of the subscriber property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link Subscriber }
-     *     
+     *
      */
     public void setSubscriber(ETSubscriber value) {
         this.subscriber = value;
@@ -156,7 +156,7 @@ public class ETSubscriberList extends ETSoapObject{
     /**
      * Generates a String representation of the contents of this type.
      * This is an extension method, produced by the 'ts' xjc plugin
-     * 
+     *
      */
     @Override
     public String toString() {

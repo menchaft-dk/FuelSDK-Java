@@ -49,7 +49,7 @@ import com.google.gson.JsonParser;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import org.apache.log4j.Logger;
 
@@ -67,27 +67,27 @@ public class ETRestConnection {
 
     private boolean isAuthConnection = false;
 
-    /** 
-    * Class constructor, Initializes a new instance of the class.
+    /**
+     * Class constructor, Initializes a new instance of the class.
      * @param client    The ETClient object
      * @param endpoint  The endpoint URL
      * @throws com.exacttarget.fuelsdk.ETSdkException
-    */
+     */
     public ETRestConnection(ETClient client, String endpoint)
-        throws ETSdkException
+            throws ETSdkException
     {
         this(client, endpoint, false);
     }
 
-    /** 
-    * Class constructor, Initializes a new instance of the class.
+    /**
+     * Class constructor, Initializes a new instance of the class.
      * @param client    The ETClient object
      * @param endpoint  The endpoint URL
      * @param isAuthConnection      true is it is an auth connection, false otherwise
      * @throws com.exacttarget.fuelsdk.ETSdkException
-    */
+     */
     public ETRestConnection(ETClient client, String endpoint, boolean isAuthConnection)
-        throws ETSdkException
+            throws ETSdkException
     {
         this.client = client;
 
@@ -101,7 +101,7 @@ public class ETRestConnection {
      * @return  The Response object
      */
     public Response get(String path)
-        throws ETSdkException
+            throws ETSdkException
     {
         HttpURLConnection connection = null;
         try {
@@ -127,7 +127,7 @@ public class ETRestConnection {
      * @return  The Response object
      */
     public Response post(String path, String payload)
-        throws ETSdkException
+            throws ETSdkException
     {
         HttpURLConnection connection = null;
         try {
@@ -153,7 +153,7 @@ public class ETRestConnection {
      * @return  The Response object
      */
     public Response patch(String path, String payload)
-        throws ETSdkException
+            throws ETSdkException
     {
         HttpURLConnection connection = null;
         try {
@@ -179,7 +179,7 @@ public class ETRestConnection {
      * @return  The Response object
      */
     public Response delete(String path)
-        throws ETSdkException
+            throws ETSdkException
     {
         HttpURLConnection connection = null;
         try {
@@ -203,7 +203,7 @@ public class ETRestConnection {
     private final static int URL_MAX_LENGTH = 2048;
 
     private HttpURLConnection sendRequest(String path, Method method)
-        throws ETSdkException
+            throws ETSdkException
     {
         if (path.length() > URL_MAX_LENGTH) {
             throw new ETSdkException(path + ": URL too long");
@@ -212,7 +212,7 @@ public class ETRestConnection {
     }
 
     private HttpURLConnection sendRequest(String path, Method method, String payload)
-        throws ETSdkException
+            throws ETSdkException
     {
         URL url = null;
         try {
@@ -224,7 +224,7 @@ public class ETRestConnection {
     }
 
     private HttpURLConnection sendRequest(URL url, Method method, String payload)
-        throws ETSdkException
+            throws ETSdkException
     {
         Gson gson = client.getGson();
 
@@ -233,13 +233,13 @@ public class ETRestConnection {
         String object = "";
         if(StringUtils.isNumeric(token[token.length-1]))
             object = token[token.length-2];
-        else 
+        else
             object = token[token.length-1];
-        
+
         HttpURLConnection connection = null;
         try {
             connection = (HttpURLConnection) url.openConnection();
-            
+
             connection.setRequestProperty("User-Agent", "FuelSDK-Java-v1.5.0-REST-"+method+"-"+object);
             connection.setRequestMethod(method.toString());
         } catch (ProtocolException ex) {
@@ -247,20 +247,20 @@ public class ETRestConnection {
         } catch (IOException ex) {
             throw new ETSdkException("error opening " + url, ex);
         }
-  
+
         switch(method) {
-          case GET:
-            connection.setDoInput(true);
-            connection.setRequestProperty("Accept", "application/json");
-            break;
-          case POST:
-          case PATCH:
-          case DELETE:
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Content-Type", "application/json");
-            break;
-          default:
-            throw new ETSdkException("unsupported request method: " + method.toString());
+            case GET:
+                connection.setDoInput(true);
+                connection.setRequestProperty("Accept", "application/json");
+                break;
+            case POST:
+            case PATCH:
+            case DELETE:
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Content-Type", "application/json");
+                break;
+            default:
+                throw new ETSdkException("unsupported request method: " + method.toString());
         }
 
         if (!isAuthConnection) {
@@ -305,12 +305,12 @@ public class ETRestConnection {
         } catch (IOException ex) {
             throw new ETSdkException("error getting response code / message", ex);
         }
-        
+
         return connection;
     }
 
     private String receiveResponse(HttpURLConnection connection)
-        throws ETSdkException
+            throws ETSdkException
     {
         Gson gson = client.getGson();
 
@@ -361,7 +361,7 @@ public class ETRestConnection {
     public enum Method {
         GET, POST, PATCH, DELETE
     }
-    
+
     /**
      * A <code>Response</code> represents salesforce marketing cloud REST API response.
      */
@@ -371,58 +371,58 @@ public class ETRestConnection {
         private String responseMessage = null;
         private String responsePayload = null;
 
-        /** 
-        * @return The Request Identifier of the Response object.
-        */    
+        /**
+         * @return The Request Identifier of the Response object.
+         */
         public String getRequestId() {
             return requestId;
         }
 
-        /** 
-        * @param    requestId    The Request Identifier of the Response object.
-        */    
+        /**
+         * @param    requestId    The Request Identifier of the Response object.
+         */
         public void setRequestId(String requestId) {
             this.requestId = requestId;
         }
 
-        /** 
-        * @return The response code of the Response object.
-        */    
+        /**
+         * @return The response code of the Response object.
+         */
         public Integer getResponseCode() {
             return responseCode;
         }
 
-        /** 
-        * @param responseCode   The response code of the Response object.
-        */    
+        /**
+         * @param responseCode   The response code of the Response object.
+         */
         public void setResponseCode(Integer responseCode) {
             this.responseCode = responseCode;
         }
 
-        /** 
-        * @return The response message of the Response object.
-        */    
+        /**
+         * @return The response message of the Response object.
+         */
         public String getResponseMessage() {
             return responseMessage;
         }
 
-        /** 
-        * @param  responseMessage   The response message of the Response object.
-        */    
+        /**
+         * @param  responseMessage   The response message of the Response object.
+         */
         public void setResponseMessage(String responseMessage) {
             this.responseMessage = responseMessage;
         }
 
-        /** 
-        * @return The response payload of the Response object.
-        */    
+        /**
+         * @return The response payload of the Response object.
+         */
         public String getResponsePayload() {
             return responsePayload;
         }
 
-        /** 
-        * @param  responsePayload   The response payload of the Response object.
-        */    
+        /**
+         * @param  responsePayload   The response payload of the Response object.
+         */
         public void setResponsePayload(String responsePayload) {
             this.responsePayload = responsePayload;
         }
