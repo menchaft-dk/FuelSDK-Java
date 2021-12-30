@@ -1,3 +1,7 @@
+# For running tests via mvn clean test
+# (Note several tests in this fork marked @Ignore as they presently don't work.)
+# Copy this file into a new fuelsdk.properties in this folder, and place values based on your Marketing Cloud config.
+# Data confidential, don't check this information into a public repository! (fuelsdk.properties is in .gitignore)
 clientId=<CLIENT_ID>
 clientSecret=<CLIENT_SECRET>
 authEndpoint=https://########.auth.marketingcloudapis.com
@@ -5,4 +9,4 @@ endpoint=https://########.rest.marketingcloudapis.com
 soapEndpoint=https://########.soap.marketingcloudapis.com/service.asmx
 useOAuth2Authentication=true
 accountId=<TARGET_ACCOUNT_ID>
-scope=<PERMISSION_LIST>
+# scope=  (can leave blank for current tests)
