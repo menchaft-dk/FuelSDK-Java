@@ -2,11 +2,15 @@
 # (Note several tests in this fork marked @Ignore as they presently don't work.)
 # Copy this file into a new fuelsdk.properties in this folder, and place values based on your Marketing Cloud config.
 # Data confidential, don't check this information into a public repository! (fuelsdk.properties is in .gitignore)
+# Below 5 values are obtained from the installed package (API integration component) created as explained here:
+# https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/install-packages.html
 clientId=<CLIENT_ID>
 clientSecret=<CLIENT_SECRET>
 authEndpoint=https://########.auth.marketingcloudapis.com
 endpoint=https://########.rest.marketingcloudapis.com
 soapEndpoint=https://########.soap.marketingcloudapis.com/service.asmx
 useOAuth2Authentication=true
+# accountId is member identification code (MID), see here on how to determine:
+# https://trailhead.salesforce.com/en/content/learn/modules/marketing-cloud-setup/set-up-your-account
 accountId=<TARGET_ACCOUNT_ID>
 # scope=  (can leave blank for current tests)
